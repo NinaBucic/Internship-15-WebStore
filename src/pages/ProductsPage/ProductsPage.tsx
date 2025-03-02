@@ -20,9 +20,12 @@ const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     setLoading(true);
+    const storedProducts: Product[] = JSON.parse(
+      localStorage.getItem("products") || "[]"
+    );
     fetchProducts()
       .then((data) => {
-        setProducts(data);
+        setProducts([...storedProducts, ...data]);
       })
       .catch((error) => console.error("Error fetching products:", error))
       .finally(() => setLoading(false));
@@ -86,15 +89,18 @@ const ProductsPage: React.FC = () => {
           >
             <TextField
               label="Search products"
+              name="searchfilter"
               variant="outlined"
               value={searchTerm}
               onChange={handleSearchChange}
               sx={{ width: 300 }}
             />
             <TextField
+              id="category-field"
               sx={{ width: 300 }}
               select
               label="Category"
+              name="category"
               value={category}
               onChange={handleCategoryChange}
               variant="outlined"
@@ -113,7 +119,7 @@ const ProductsPage: React.FC = () => {
             </TextField>
           </Box>
           <Grid2 container spacing={3} sx={{ marginTop: 5 }}>
-            {filteredProducts.map((product) => (
+            {filteredProducts.slice(0, 20).map((product) => (
               <Grid2 size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
                 <ProductCard product={product} onClick={handleCardClick} />
               </Grid2>
