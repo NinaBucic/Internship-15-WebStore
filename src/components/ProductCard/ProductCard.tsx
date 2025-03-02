@@ -1,6 +1,7 @@
 import React from "react";
 import { Product } from "../../types/product";
 import "./ProductCard.css";
+import noImage from "../../assets/images/no-image.jpg";
 
 interface ProductCardProps {
   product: Product;
@@ -14,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         <img
           src={product.image}
           onError={(e) => {
-            e.currentTarget.src = "../../assets/images/no-image.jpg";
+            e.currentTarget.src = noImage;
           }}
           alt={product.title}
         />
