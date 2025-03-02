@@ -1,10 +1,6 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import logo from "../assets/images/webstore-icon.png";
 
 const Layout: React.FC = () => {

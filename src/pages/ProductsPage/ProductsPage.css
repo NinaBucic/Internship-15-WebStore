@@ -1,0 +1,13 @@
+.products-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.products-page h1 {
+  font-weight: 600;
+  color: rgba(0, 0, 255, 0.707);
+  font-size: 40px;
+}
