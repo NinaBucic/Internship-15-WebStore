@@ -11,8 +11,11 @@ import {
 import { ProductCategories } from "../../types/productCategories";
 import ProductCard from "../../components/ProductCard/ProductCard.tsx";
 import "./ProductsPage.css";
+import { useNavigate } from "react-router-dom";
 
 const ProductsPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState<string>("");
@@ -58,9 +61,8 @@ const ProductsPage: React.FC = () => {
     []
   );
 
-  //navigate later...
   const handleCardClick = (id: number) => {
-    console.log("Clicked product", id);
+    navigate(`/product/${id}`);
   };
 
   return (
